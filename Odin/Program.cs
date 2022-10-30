@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Odin.Data.Database;
+using Odin.Service;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,8 +19,7 @@ builder.Services.AddEntityFrameworkSqlServer()
     );
 
 //Config da Injeção de dependecia
-//builder.Services.AddScoped<IUsuarioService, UsuarioService>();
-//builder.Services.AddScoped<ITarefaService, TarefaService>();
+builder.Services.AddScoped<ITicketService, TicketService>();
 
 var app = builder.Build();
 
@@ -28,6 +29,14 @@ var app = builder.Build();
     app.UseSwagger();
     app.UseSwaggerUI();
 //}
+
+// Configuração do Cors
+app.UseCors(c =>
+{
+    c.AllowAnyHeader();
+    c.AllowAnyMethod();
+    c.AllowAnyOrigin();
+});
 
 app.UseHttpsRedirection();
 
