@@ -29,6 +29,14 @@ var app = builder.Build();
     app.UseSwaggerUI();
 //}
 
+// Configuração do Cors
+app.UseCors(c =>
+{
+    c.AllowAnyHeader();
+    c.AllowAnyMethod();
+    c.AllowAnyOrigin();
+});
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
