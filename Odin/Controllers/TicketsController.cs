@@ -27,6 +27,15 @@ namespace Odin.Controllers
             return Ok(result);
         }
 
+
+        //// POST api/<TicketsController>
+        [HttpPost]
+        public async Task<ActionResult<TicketModel>> Add([FromBody] TicketModel ticket)
+        {
+            TicketModel result = await _ticketService.Add(ticket);
+            return Ok(result);
+        }
+
         //// GET api/<TicketsController>/5
         //[HttpGet("{id}")]
         //public string Get(int id)

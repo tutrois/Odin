@@ -7,7 +7,7 @@ namespace Odin.Data.Entities.Models
 {
     public class TicketModel
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Number { get; set; }
@@ -24,6 +24,6 @@ namespace Odin.Data.Entities.Models
         public StatusTicket Status { get; set; }
         
         [DisplayFormat(DataFormatString = "MM/dd/yyyy hh:mm")]
-        public DateTime CreatedOn { get; set; }
+        public DateTime CreatedOn { get; set; } = DateTime.Now;
     }
 }

@@ -17,5 +17,13 @@ namespace Odin.Service
         {
             return await _dbContex.Tickets.OrderBy(e => e.CreatedOn).ToListAsync();
         }
+
+        public async Task<TicketModel> Add(TicketModel ticket)
+        {
+            await _dbContex.Tickets.AddAsync(ticket);
+            await _dbContex.SaveChangesAsync();
+
+            return ticket;
+        }
     }
 }

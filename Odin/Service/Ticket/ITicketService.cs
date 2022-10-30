@@ -5,5 +5,6 @@ namespace Odin.Service
     public interface ITicketService
     {
         Task<List<TicketModel>> GetAll();
+        Task<TicketModel> Add(TicketModel usuario);
     }
 }
