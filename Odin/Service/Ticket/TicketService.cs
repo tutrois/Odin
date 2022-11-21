@@ -42,8 +42,6 @@ namespace Odin.Service
         {
             TicketModel ticket = await GetById(id);
 
-            ticket.Title = uTicket.Title;
-            ticket.Description = uTicket.Description;
             ticket.Status = uTicket.Status;
 
             _dbContex.Tickets.Update(ticket);
