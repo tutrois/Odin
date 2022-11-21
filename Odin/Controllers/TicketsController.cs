@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Odin.Data.Entities.Enums;
 using Odin.Data.Entities.Models;
 using Odin.Service;
 using System.Collections.Generic;
@@ -46,15 +49,21 @@ namespace Odin.Controllers
             return Ok(result);
         }
 
+        [HttpPut("{id}")]
+        public async Task<ActionResult<TicketModel>> Atualizar([FromBody] TicketModel tarefa, Guid id)
+        {
+            if(tarefa == null)
+            {
+                return BadRequest();
+            }
+
+            TicketModel result = await _ticketService.Update(tarefa, id);
+            return Ok(result);
+        }
+
         //// POST api/<TicketsController>
         //[HttpPost]
         //public void Post([FromBody] string value)
-        //{
-        //}
-
-        //// PUT api/<TicketsController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
         //{
         //}
 
