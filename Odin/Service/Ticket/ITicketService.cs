@@ -7,5 +7,6 @@ namespace Odin.Service
         Task<List<TicketModel>> GetAll();
         Task<TicketModel> Add(TicketModel usuario);
         Task<TicketModel> GetById(Guid ticketId);
+        Task<TicketModel> Update(TicketModel uTicket, Guid id);
     }
 }

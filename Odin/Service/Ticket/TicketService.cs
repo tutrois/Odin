@@ -38,6 +38,18 @@ namespace Odin.Service
             return ticket;
         }
 
+        public async Task<TicketModel> Update(TicketModel uTicket, Guid id)
+        {
+            TicketModel ticket = await GetById(id);
 
+            ticket.Title = uTicket.Title;
+            ticket.Description = uTicket.Description;
+            ticket.Status = uTicket.Status;
+
+            _dbContex.Tickets.Update(ticket);
+            await _dbContex.SaveChangesAsync();
+
+            return ticket;
+        }
     }
 }
