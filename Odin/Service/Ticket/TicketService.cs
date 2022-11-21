@@ -25,5 +25,19 @@ namespace Odin.Service
 
             return ticket;
         }
+
+        public async Task<TicketModel> GetById(Guid ticketId)
+        {
+            var ticket = await _dbContex.Tickets.FirstOrDefaultAsync(e => e.Id == ticketId);
+
+            if (ticket == null)
+            {
+                throw new Exception($"o Chamado não foi encontrado, pois o ID: {ticketId} não existe no banco de dados.");
+            }
+
+            return ticket;
+        }
+
+
     }
 }
