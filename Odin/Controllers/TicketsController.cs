@@ -2,6 +2,7 @@
 using Odin.Data.Entities.Models;
 using Odin.Service;
 using System.Collections.Generic;
+using System.Net.Sockets;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -37,11 +38,13 @@ namespace Odin.Controllers
         }
 
         //// GET api/<TicketsController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+        [HttpGet("{id}")]
+        public async Task<ActionResult<TicketModel>> Get(Guid id)
+        {
+            var result = await _ticketService.GetById(id);
+
+            return Ok(result);
+        }
 
         //// POST api/<TicketsController>
         //[HttpPost]
